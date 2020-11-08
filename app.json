@@ -1,0 +1,50 @@
+{
+  "name": "TorrentSearchBot",
+  "description": "Simple TorrentSearchBot in Telethon.",
+  "logo": "http://3.bp.blogspot.com/-ExIk5AimQ-Y/TobKhgclfFI/AAAAAAAAAFU/qD_KALfc7mg/s1600/torrents-utorrent+%25281%2529.png",
+  "keywords": [
+    "telegram",
+    "torrent",
+    "plugin",
+    "telegram-bot",
+    "productivity"
+  ],
+  "repository": "https://github.com/starkgang/ChatBot",
+  "website": "starkgang.ml",
+  "success_url": "t.me/FridayOT",
+  "env": {
+    "ENV": {
+      "description": "Setting this to ANYTHING will enable heroku.",
+      "value": "ANYTHING"
+    },
+    "BOT_TOKEN": {
+      "description": "Your Bot Token.",
+      "value": ""
+    },
+    "DUMB_CHAT": {
+      "description": "Group ID Where Your Logs Will Go.",
+      "value": ""
+    },
+    "APP_ID": {
+      "description": "Get this value from my.telegram.org! Please do not steal",
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "Get this value from my.telegram.org! Please do not steal",
+      "value": ""
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "12"
+      }
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
