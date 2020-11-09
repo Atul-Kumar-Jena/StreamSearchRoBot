@@ -57,7 +57,7 @@ async def search(event):
     url = f"https://del.dog/{r['key']}"
     await glass.delete()
     await torrentbot.send_message(event.chat_id,
-        message=f"**Results Fetched SucessFully**",
+        message=f"**Fetched The Results Sucessfully❗**",
         buttons = [
               [Button.url("See Results", f"{url}")],
               ]
