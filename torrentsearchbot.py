@@ -1,107 +1,109 @@
 import requests
+from youtubesearchpython import SearchVideos
 from telegraph import Telegraph
+from telethon.tl.types import InputWebDocument
 from telethon import TelegramClient, events
 from telethon import custom, events, Button
 import re
+import urllib
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 from Configs import Config
 from loggers import logging
+import os
+import re
+from math import ceil
+import requests
+import telethon
+from telethon import Button, custom, events, functions
 bot = TelegramClient("bot", api_id=Config.API_ID, api_hash=Config.API_HASH)
 torrentbot = bot.start(bot_token=Config.BOT_TOKEN)
 
-help_txt = (
-    "<b>How To Use Me?</b> \n\n"
-    "<code>/search <KeyWord> - Searches The Key Word Given For Torrent Magnets. \n"
-    "/help - No One is Gonna Help You. \n"
-)
-
-@torrentbot.on(events.NewMessage(pattern="^/search (.*)"))
-async def search(event):
-    starkpro = event.pattern_match.group(1)
-    apifinal = "https://api.sumanjay.cf/torrent/?query=" + starkpro
-    hmmyeah = event.sender_id
-    replied_user = await event.client(GetFullUserRequest(event.sender_id))
-    firstname = replied_user.user.first_name
+@torrentbot.on(events.InlineQuery(pattern=r"torrent (.*)"))
+async def inline_id_handler(event: events.InlineQuery.Event):
+    builder = event.builder
+    testinput = event.pattern_match.group(1)
+    starkisnub = urllib.parse.quote_plus(testinput)
+    results = []
+    sedlyf = "https://api.sumanjay.cf/torrent/?query=" + starkisnub
     try:
-        sed = requests.get(url=apifinal, timeout=10).json()
-    except requests.exceptions.Timeout as err: 
-        await event.reply("Cound't Fetch Anything?, Check Spelling Maybe?")
+        okpro = requests.get(url=sedlyf, timeout=10).json()
+    except:
+        pass
+    sed = len(okpro)
+    if sed == 0:
+        resultm = builder.article(
+                title="No Results Found.",
+                description="Check Your Spelling / Keyword",
+                text="Bruh, No Results. Check Spelling",
+            )
+        await event.answer([resultm])
         return
-    if len(sed) == 0:
-        await event.reply("Cound't Fetch Anything?, Check Spelling Maybe?")
-        return
-    glass = await event.reply("Searching For Results 🔎")
-    hmm = f"Search Results \nQuery : {starkpro} \nFetched For : {firstname} \n\n"
-    for okpro in sed:
-        seds = okpro["age"]
-        okpros = okpro["leecher"]
-        sadstark = okpro["magnet"]
-        okiknow = okpro["name"]
-        starksize = okpro["size"]
-        starky = okpro["type"]
-        seeders = okpro["seeder"]
-        sites = okpro["site"]
-        hmm += (
-            f"Name : {okiknow}\n"
-            f"Size : {starksize}\n"
-            f"Age : {seds}\n"
-            f"Total Leechers : {okpros}\n"
-            f"Type : {starky} \n"
-            f"Seeder : {seeders} \n"
-            f"Site : {sites} \n"
-            f"Magnet : {sadstark}\n\n"
-        )
-    url = "https://del.dog/documents"
-    r = requests.post(url, data=hmm.encode("UTF-8")).json()
-    url = f"https://del.dog/{r['key']}"
-    await glass.delete()
-    await torrentbot.send_message(event.chat_id,
-        message=f"**Fetched The Results Sucessfully❗**",
-        buttons = [
-              [Button.url("See Results", f"{url}")],
-              ]
-             )
-    await torrentbot.send_message(Config.DUMB_CHAT, f"USER-ID : `{hmmyeah}` \nSearched For : `{starkpro}`")
+    if sed > 30:
+        for i in range(30):
+            seds = okpro[i]["age"]
+            okpros = okpro[i]["leecher"]
+            sadstark = okpro[i]["magnet"]
+            okiknow = okpro[i]["name"]
+            starksize = okpro[i]["size"]
+            starky = okpro[i]["type"]
+            seeders = okpro[i]["seeder"]
+            okayz = (f"**Title :** `{okiknow}` \n**Size :** `{starksize}` \n**Type :** `{starky}` \n**Seeder :** `{seeders}` \n**Leecher :** `{okpros}` \n**Magnet :** `{sadstark}` ")
+            sedme = f"Size : {starksize} Type : {starky} Age : {seds}"
+            results.append(await event.builder.article(
+                title=okiknow,
+                description=sedme,
+                text=okayz,
+            )
+                               )
+    else:
+        for sedz in okpro:
+            seds = sedz["age"]
+            okpros = sedz["leecher"]
+            sadstark = sedz["magnet"]
+            okiknow = sedz["name"]
+            starksize = sedz["size"]
+            starky = sedz["type"]
+            seeders = sedz["seeder"]
+            okayz = (f"**Title :** `{okiknow}` \n**Size :** `{starksize}` \n**Type :** `{starky}` \n**Seeder :** `{seeders}` \n**Leecher :** `{okpros}` \n**Magnet :** `{sadstark}` ")
+            sedme = f"Size : {starksize} Type : {starky} Age : {seds}"
+            results.append(await event.builder.article(
+                title=okiknow,
+                description=sedme,
+                text=okayz,
+            )
+                               )
+    await event.answer(results)
 
 
-@torrentbot.on(events.NewMessage(pattern="^/help$"))
-async def search(event):
-    await event.reply(help_txt, parse_mode="HTML")
+@torrentbot.on(events.InlineQuery(pattern=r"yt (.*)"))
+async def inline_id_handler(event: events.InlineQuery.Event):
+    builder = event.builder
+    testinput = event.pattern_match.group(1)
+    starkisnub = urllib.parse.quote_plus(testinput)
+    results = []
+    search = SearchVideos(f"{testinput}", offset=1, mode="dict", max_results=20)
+    mi = search.result()
+    moi = mi["search_result"]
+    for mio in moi:
+        mo = mio["link"]
+        thum = mio["title"]
+        fridayz = mio["id"]
+        thums = mio["channel"]
+        td = mio["duration"]
+        tw = mio["views"]
+        kekme = f"https://img.youtube.com/vi/{fridayz}/hqdefault.jpg"
+        okayz = (f"**Title :** `{thum}` \n**Link :** `{mo}` \n**Channel :** `{thums}` \n**Views :** `{tw}` \n**Duration :** `{td}`")
+        hmmkek = f'Channel : {thums} \nDuration : {td} \nViews : {tw}'
+        results.append(await event.builder.article(
+                title=thum,
+                description=hmmkek,
+                text=okayz,
+                buttons=[Button(text='Search Again', switch_inline='yt ', callback=None)],
+            )
+                               )
+    await event.answer(results)
 
-@torrentbot.on(events.NewMessage(pattern="^/start$"))
-async def search(event):
-    starkbot = await torrentbot.get_me()
-    bot_id = starkbot.first_name
-    bot_username = starkbot.username
-    replied_user = await event.client(GetFullUserRequest(event.sender_id))
-    firstname = replied_user.user.first_name
-    vent = event.chat_id
-    sedtext = (f'**Hey, {firstname} !** \n`I am a Simple Torrent Search Bot.` \n'
-    '`Send Me A Query And I will Give You Magnet Link Pasted In Dogbin.` \n'
-    '__Thank You For Using Me.__ \n'
-    '**(C) @STARKGANG**')
-    await torrentbot.send_message(event.chat_id, message=sedtext, buttons = [
-             [custom.Button.inline("Help ❓", data="mewant")],
-             [custom.Button.inline("Close 🔐", data="close ")],
-              ]
-             )
-    
-@torrentbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"mewant")))
-async def help(event):
-    okbruh = ("**How To Use Me?**\n\n"
-    "`/search <KeyWord>` - __Searches The Key Word Given For Torrent Magnets.__ \n"
-    "`/help` - __No One is Gonna Help You.__ \n")
-    await event.edit(
-            okbruh,
-            buttons=[
-                [Button.url("Join Channel", "t.me/Telegram")],
-            ],
-        )
-@torrentbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
-async def help(event):
-    await event.delete()
-    
 print("Bot Is Alive.")
 def startbot():
     torrentbot.run_until_disconnected()
