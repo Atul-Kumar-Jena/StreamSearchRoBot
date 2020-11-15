@@ -33,7 +33,7 @@ async def search(event):
                      )
 @torrentbot.on(events.NewMessage(pattern="^/start$"))
 async def search(event):
-    await event.reply('<b><u>Here is My Repo</b></u> <code>https://github.com/StarkGang/StreamSearchRoBot</code>", parse_mode="HTML")
+    await event.reply('<b><u>Here is My Repo</b></u> <code>https://github.com/StarkGang/StreamSearchRoBot</code>', parse_mode="HTML")
 
 @torrentbot.on(events.InlineQuery(pattern=r"torrent (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
