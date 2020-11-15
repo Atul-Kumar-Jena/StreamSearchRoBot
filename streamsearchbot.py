@@ -31,7 +31,7 @@ async def search(event):
                       [Button.switch_inline("Search JioMusic", query="jm ", same_peer=True)],
                               ]
                      )
-@torrentbot.on(events.NewMessage(pattern="^/start$"))
+@torrentbot.on(events.NewMessage(pattern="^/repo$"))
 async def search(event):
     await event.reply('<b><u>Here is My Repo</b></u> <code>https://github.com/StarkGang/StreamSearchRoBot</code>', parse_mode="HTML")
 
