@@ -21,11 +21,11 @@ python -m streamsearchbot
 # Currently Supports 🔥
 * Torrent 
 * YouTube 
-* JioSavaan (Inaccurate Results)
+* JioSaavn (Inaccurate Results)
 
 # ToDo(S)
 * [x] Add Inline Support
-* [ ] Accurate Results For JioSavaan
+* [ ] Accurate Results For JioSaavn
 * [ ] More Streaming Support 
 
 # Licence
