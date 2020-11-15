@@ -5,17 +5,17 @@
 
 
 # Deploy
-[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/StarkGang/TorrentSearchBot/blob/main)
+[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/StarkGang/StreamSearchRoBot/blob/main)
 
 # Normal Way
 ```python3
-git clone https://github.com/StarkGang/TorrentSearchBot
-cd TorrentSearchBot
+git clone https://github.com/StarkGang/StreamSearchRoBot
+cd StreamSearchRoBot
 pip install -r requirements.txt
 # Make A file Named local_config and put all your values There and Then Run the bot.
-python3 -m torrentsearchbot
+python3 -m streamsearchbot
       or 
-python -m torrentsearchbot
+python -m streamsearchbot
 ```
 
 # Licence
