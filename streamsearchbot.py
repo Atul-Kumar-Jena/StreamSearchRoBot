@@ -179,7 +179,7 @@ async def inline_handler(event):
                       [Button.url("Contact Me", f"t.me/{firstname}")],
                       [Button.switch_inline("Search Youtube", query="yt ", same_peer=True)],
                       [Button.switch_inline("Search Torrent", query="torrent ", same_peer=True)],
-                      [Button.switch_inline("Search JioSavaan", query="jm ", same_peer=True)],
+                      [Button.switch_inline("Search JioSaavn", query="jm ", same_peer=True)],
                               ]
             )
             await event.answer([resulte])
