@@ -18,6 +18,16 @@ python3 -m streamsearchbot
 python -m streamsearchbot
 ```
 
+# Currently Supports 🔥
+* Torrent 
+* YouTube 
+* JioSavaan (Inaccurate Results)
+
+## ToDo(S)
+* [x] Added Inline Support
+* [ ] Accurate Results For JioSavaan
+* [ ] More Streaming Support 
+
 # Licence
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)  
 
