@@ -7,7 +7,7 @@
 # Deploy
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/StarkGang/StreamSearchRoBot/blob/main)
 
-# Normal Way
+# Normal Way // HardWay
 ```python3
 git clone https://github.com/StarkGang/StreamSearchRoBot
 cd StreamSearchRoBot
@@ -23,7 +23,7 @@ python -m streamsearchbot
 * YouTube 
 * JioSavaan (Inaccurate Results)
 
-## ToDo(S)
+# ToDo(S)
 * [x] Added Inline Support
 * [ ] Accurate Results For JioSavaan
 * [ ] More Streaming Support 
