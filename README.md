@@ -1,6 +1,6 @@
 <p align="center"><a href="https://t.me/fridayot"><img src="http://3.bp.blogspot.com/-ExIk5AimQ-Y/TobKhgclfFI/AAAAAAAAAFU/qD_KALfc7mg/s1600/torrents-utorrent+%25281%2529.png" width="500"></a></p> 
-<h1 align="center"><b>TORRENT-SEARCHBOT</b></h1>
-<h4 align="center">A Simple TorrentSearchBot In Telethon</h4>
+<h1 align="center"><b>STREAM-SEARCHBOT</b></h1>
+<h4 align="center">A Simple StreamSearchBot In Telethon</h4>
 
 
 
