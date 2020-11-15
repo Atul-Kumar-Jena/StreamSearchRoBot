@@ -4,3 +4,5 @@ heroku3
 psycopg2
 requests
 telegraph
+youtube-search-python
+flixpy
