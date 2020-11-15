@@ -2,7 +2,7 @@
 <h1 align="center"><b>STREAM-SEARCHBOT</b></h1>
 <h4 align="center">A Simple StreamSearchBot In Telethon</h4>
 
-This Bot Can Be Found As [@StreamSearchRoBot](telegram.dog/StreamSearchRoBot) In Telegram 
+This Bot Can Be Found As [@StreamSearchRoBot](https://telegram.dog/StreamSearchRoBot) In Telegram 
 
 # Deploy
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/StarkGang/StreamSearchRoBot/blob/main)
