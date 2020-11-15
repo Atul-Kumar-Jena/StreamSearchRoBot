@@ -1,1 +1,1 @@
-bot: python -m torrentsearchbot
+bot: python -m streamsearchbot
